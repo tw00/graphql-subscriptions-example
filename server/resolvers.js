@@ -21,7 +21,7 @@ const root = {
   },
 };
 
-// Sends a notifcation every 2 sec
+// Sends a notification every 2 sec
 (function run() {
   let rev = 0;
   setInterval(() => {

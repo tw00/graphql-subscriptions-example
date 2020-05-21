@@ -1,14 +1,14 @@
 # GraphQL Subscriptions Example
 
-A minimal Server and Client demonstrating GraphQL Subscriptions
+A minimal Server and Client demonstrating [GraphQL Subscriptions](http://spec.graphql.org/draft/#sec-Subscription-Operation-Definitions)
 
 ![example](./public/example.png)
 
 ## Dependencies
 
 - Server:
-  - `graphql-subscriptions`
-  - `subscriptions-transport-ws`
+  - [`graphql-subscriptions`](https://github.com/apollographql/graphql-subscriptions)
+  - [`subscriptions-transport-ws`](https://github.com/apollographql/subscriptions-transport-ws)
 
 - Client:
   - `apollo-client`
