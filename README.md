@@ -2,6 +2,8 @@
 
 A minimal Server and Client demonstrating GraphQL Subscriptions
 
+![example](./public/example.png)
+
 ## Dependencies
 
 - Server:
