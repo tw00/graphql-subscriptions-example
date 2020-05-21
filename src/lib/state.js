@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 import apolloClient from './graphql';
 
-export async function subscribe() {
-  apolloClient.subscribe({
+export async function subscribe(cb = null) {
+  return apolloClient.subscribe({
     query: gql`
     subscription onDocumentEvent {
       newDocument {
@@ -13,21 +13,10 @@ export async function subscribe() {
     }`,
     variables: {},
   }).subscribe({
-    next(data) {
+    next({ data }) {
       // Notify your application with the new arrived data
-      console.log(`oh new data...${JSON.stringify(data)}`)
+      console.log(`[subscribe update]`, data)
+      cb && cb(data);
     }
   });
 }
-
-// export function test2() {
-//     apolloClient.query({
-//       query: gql`
-//       {
-//         retrieveDocument {
-//           id
-//         }
-//       }
-//     `
-//     }).then((result) => console.log(`res2 ${JSON.stringify(result)}`))
-// }

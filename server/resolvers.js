@@ -2,19 +2,6 @@ const pubsub = require('./pubsub');
 
 // The root provides a resolver function for each API endpoint
 const root = {
-  Query: {
-    retrieveDocument: () => {
-      console.log(`hello`)
-      pubsub.publish('NOTIFICATION_NEW_DOCUMENT', {
-        newDocument: { id: "222", title: 'newdocument2' }
-      });
-      return {
-        id: '111',
-        title: 'hello world'
-      }
-    },
-  },
-  // Mutation: {},
   Subscription: {
     newDocument: {
       resolve: ({ newDocument }) => {
@@ -25,11 +12,16 @@ const root = {
         console.log(`subscribed...`)
         return pubsub.asyncIterator('NOTIFICATION_NEW_DOCUMENT')
       }
-      // subscribe: () => pubsub.asyncIterator("pinAdded")
     }
-  }
+  },
+  Query: {
+    retrieveDocument: () => {
+      return { id: '0', title: 'hello world' }
+    },
+  },
 };
 
+// Sends a notifcation every 2 sec
 (function run() {
   let rev = 0;
   setInterval(() => {
@@ -37,10 +29,10 @@ const root = {
       newDocument: {
         id: "1",
         rev: ++rev,
-        title: 'test:' + Math.random(),
+        title: 'server event: ' + String(Math.random()).substr(-8),
       }
     });
-  }, 5000);
+  }, 2000);
 })();
 
 module.exports = root;
