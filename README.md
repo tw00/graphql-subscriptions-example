@@ -1,6 +1,6 @@
 # GraphQL Subscriptions Example
 
-A minimal Server and Client demonstrating [GraphQL Subscriptions](http://spec.graphql.org/draft/#sec-Subscription-Operation-Definitions)
+A minimal Server and Client demonstrating [GraphQL Subscriptions](http://spec.graphql.org/draft/#sec-Subscription)
 
 ![example](./public/example.png)
 
